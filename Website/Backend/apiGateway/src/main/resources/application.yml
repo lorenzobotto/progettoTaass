@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gatewayService
+  cloud:
+    gateway:
+      routes:
+        - id: authService
+          uri: lb://authService
+          predicates:
+            - Path=/api/v1/auth/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - id: mapService
+          uri: lb://mapService
+          predicates:
+            - Path=/api/v1/maps/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - id: reservationService
+          uri: lb://reservationService
+          predicates:
+            - Path=/api/v1/reservations/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - id: userService
+          uri: lb://userService
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka
+  instance:
+    prefer-ip-address: true

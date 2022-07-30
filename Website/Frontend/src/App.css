@@ -1,0 +1,371 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Encode Sans Expanded', sans-serif;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+.divider {                /* minor cosmetics */
+  display: table; 
+  font-size: 24px; 
+  text-align: center; 
+  width: 45%;             /* divider width */
+  margin: 40px auto;          /* spacing above/below */
+}
+
+@media screen and (max-width: 968px) {
+  .divider {
+      width: 55%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .divider {
+      width: 65%; 
+  }
+}
+
+.divider span { display: table-cell; position: relative; }
+.divider span:first-child, .divider span:last-child {
+  width: 50%;
+  top: 16px;              /* adjust vertical align */
+  -moz-background-size: 100% 2px;   /* line width */
+  background-size: 100% 2px;      /* line width */
+  background-position: 0 0, 0 100%;
+  background-repeat: no-repeat;
+}
+.divider span:first-child {       /* color changes in here */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#fff));
+  background-image: -webkit-linear-gradient(180deg, transparent, #fff);
+  background-image: -moz-linear-gradient(180deg, transparent, #fff);
+  background-image: -o-linear-gradient(180deg, transparent, #fff);
+  background-image: linear-gradient(90deg, transparent, #fff);
+}
+.divider span:nth-child(2) {
+  color: #fff; padding: 0px 5px; width: auto; white-space: nowrap;
+}
+.divider span:last-child {        /* color changes in here */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(transparent));
+  background-image: -webkit-linear-gradient(180deg, #fff, transparent);
+  background-image: -moz-linear-gradient(180deg, #fff, transparent);
+  background-image: -o-linear-gradient(180deg, #fff, transparent);
+  background-image: linear-gradient(90deg, #fff, transparent);
+}
+
+.container {
+  padding-left: 20px;
+}
+
+.btnFacebookAccess {
+  border-radius: 4px;
+  background: #3b5998;
+  color:white;
+  border:0px transparent;  
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+  min-height: 40px;
+  width: 244px;
+  transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s, box-shadow 0.218s ease 0s;
+}
+
+.btnFacebookRegister {
+  border-radius: 4px;
+  background: #3b5998;
+  color:white;
+  border:0px transparent;  
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+  min-height: 40px;
+  width: 400px;
+  transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s, box-shadow 0.218s ease 0s;
+}
+
+.btnFacebook:hover {
+  box-shadow: rgb(66, 133, 244, 0.3) 0px 0px 3px 3px;
+}
+
+.dettagliTextArea {
+  color: #999;
+  margin-left: auto;
+  width: 48%;
+  margin-bottom: 30px; 
+  display: none;
+}
+
+.errorMsg {
+  color: #dc3545;
+  margin-left: auto;
+  width: 48%;
+  margin-bottom: 30px; 
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .dettagliTextArea {
+      width: 100%;
+  }
+
+  .errorMsg {
+    width: 100%;
+  }
+}
+
+#profiloContainer {
+  display: flex;
+}
+
+.sidebar {
+  min-height: 90vh;
+  background-color: #121826;
+  width: 30%;
+  min-width: 200px;
+}
+
+.sidebarTitle {
+    color: #fff;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    text-align: center;
+    font-weight: 900;
+    padding: 10px;
+} 
+
+.sidebarLinks ul {
+    margin-bottom: 3rem;
+}
+
+.sidebarLinks ul .active {
+    border-right: 0.3rem solid #01bf71;
+} 
+
+.sidebarLinks ul li {
+  border-right: 0.3rem solid transparent;
+  margin: 1rem 0;
+  list-style-type: none;
+  transition: 0.3s ease-in-out;
+} 
+
+.sidebarLinks ul li:hover {
+  border-right-color: #01bf71;
+} 
+
+.sidebarLinks ul li:hover a {
+  color: #01bf71;
+} 
+
+.sidebarLinks ul li a {
+  margin: 0 3rem;
+  text-decoration: none;
+  color: rgb(93,98,145);
+  font-size: 1.1rem;
+  display: flex;
+  gap: 1rem;
+} 
+
+.sidebarLinks ul .active a {
+  color: #01bf71;
+} 
+
+.sidebarLogo {
+  padding-top: 6rem;
+  margin: 0 2rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 1050px) {
+  .sidebarTitle {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .sidebarLinks ul li a {
+    margin: 0 0.5rem;
+  } 
+}
+
+@media screen and (max-width: 768px) {
+  .sidebarTitle {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .sidebarLinks ul li a {
+    margin: 0 0;
+  } 
+
+  .sidebarLinks ul {
+    padding-left: 10px;
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .profileForm {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 15px;
+  }
+
+  .profileForm div div {
+    flex: auto;
+  }
+
+  .profileForm div div label {
+    margin-top: 15px;
+  }
+
+  .profileForm .checkForm label {
+    width: 100%;
+    margin-top: 0px;
+  }
+
+  .profileForm .formPrice {
+    margin-right: 50px;
+  }
+
+  .profileForm .errorAnimali {
+    margin-right: 300px;
+  }
+}
+
+@media screen and (max-width: 726px) {
+
+  .profileForm .errorAnimali {
+    margin-right: 215px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+
+  .profileForm .errorAnimali {
+    margin-right: 125px;
+  }
+}
+
+@media screen and (max-width: 551px) {
+
+  .profileForm .errorAnimali {
+    margin-right: 50px;
+  }
+}
+
+
+.checkForm {
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.dashboard {
+    padding: 2rem;
+    min-height: 90vh;
+    color: white;
+    width: 70%;
+}
+
+@media screen and (max-width: 550px) {
+  .dashboard {
+    padding: 1rem;
+  }
+}
+
+.btnGoogle span {
+  margin-left: -38px;
+}
+
+@media screen and (max-width: 680px) {
+  .btnGoogle span {
+    margin-left: 0px;
+  }
+}
+
+.bntPay {
+  display: flex;
+  flex-direction: row;
+}
+
+#pCont {
+  width: 50%;
+  margin-right: 10px;
+  height: 55px;
+}
+
+@media screen and (max-width: 550px) {
+  #pCont {
+    height: auto;
+  }
+}
+
+#divPrenotazione {
+  display: flex;
+}
+
+#prenotPos, #prenotDate {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 40%;
+}
+
+#prenotAnimal {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 20%;
+}
+
+@media screen and (max-width: 1000px) {
+
+  #divPrenotazione {
+    flex-wrap: wrap;
+  }
+
+  #prenotPos, #prenotDate {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+  }
+
+  #prenotAnimal {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  #prenotDate {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  #divPrenotazione {
+    flex-wrap: wrap;
+  }
+
+  #prenotPos, #prenotDate {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100%;
+  }
+
+  #prenotAnimal {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100%;
+  }
+}

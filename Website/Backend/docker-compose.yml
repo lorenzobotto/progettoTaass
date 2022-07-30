@@ -1,0 +1,91 @@
+version: '3'
+services:
+  eureka-server:
+    image: com.petcare/eureka-server:0.0.1-SNAPSHOT
+    container_name: eureka-server
+    expose:
+      - 8761
+
+  auth-service:
+    image: com.petcare/auth-service:0.0.1-SNAPSHOT
+    container_name: auth-service
+    expose:
+      - 8081
+    depends_on:
+      - eureka-server
+      - postgresqldb
+
+  map-service:
+    image: com.petcare/map-service:0.0.1-SNAPSHOT
+    container_name: map-service
+    expose:
+      - 8082
+    depends_on:
+      - eureka-server
+      - postgresqldb
+
+  reservation-service:
+    image: com.petcare/reservation-service:0.0.1-SNAPSHOT
+    container_name: reservation-service
+    expose:
+      - 8083
+    depends_on:
+      - eureka-server
+      - postgresqldb
+
+  user-service:
+    image: com.petcare/user-service:0.0.1-SNAPSHOT
+    container_name: user-service
+    expose:
+      - 8084
+    depends_on:
+      - eureka-server
+      - postgresqldb
+
+  api-gateway:
+    image: com.petcare/api-gateway:0.0.1-SNAPSHOT
+    container_name: api-gateway
+    expose:
+      - 8080
+    depends_on:
+      - eureka-server
+    labels:
+      kompose.service.type: NodePort
+      kompose.service.nodeport.port: "30000"
+
+  postgresqldb:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=websitepetcare
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_LISTEN_PORT: 50
+    ports:
+      - "5050:50"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - "postgresqldb:pgsql-server"
+    depends_on:
+      - postgresqldb
+    labels:
+      kompose.service.type: NodePort
+      kompose.service.nodeport.port: "30001"
+
+volumes:
+  database-data:
+    external: true
+  pgadmin-data:
+    external: true
